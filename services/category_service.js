@@ -53,6 +53,7 @@ async function getCategoryById(params, callback) {
     .findById(categoryId)
     .then((response) => {
       if (!response) callback("Not Found Category wit Id" + categoryId);
+      else callback(null, response);
     })
     .catch((error) => {
       return callback(error);
@@ -66,6 +67,7 @@ async function updateCategory(params, callback) {
     .findByIdAndUpdate(categoryId, params, { useFindAndModify: false })
     .then((response) => {
       if (!response) callback("Not Found Category wit Id" + categoryId);
+      else callback(null, response);
     })
     .catch((error) => {
       return callback(error);
@@ -79,6 +81,7 @@ async function deleteCategory(params, callback) {
     .findByIdAndDelete(categoryId)
     .then((response) => {
       if (!response) callback("Not Found Category wit Id" + categoryId);
+      else callback(null, response);
     })
     .catch((error) => {
       return callback(error);

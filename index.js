@@ -3,7 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 const { MONGO_DB } = require("./config/app_config");
 const errors = require("./middleware/errors");
-const swaggerUi = require("swagger-ui-express"), swaggerDocument = require("./swagger.json")
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+const router = require('./routes/app_route');
 
 mongoose.Promise = global.Promise;
 mongoose
@@ -22,9 +24,9 @@ mongoose
 
 app.use(express.json());
 app.use("/uploads", express.static("uploads"));
-app.use("/api", require("./routes/app_route"));
+app.use("/api", router);
 app.use(errors.errorHandler);
-app.use("api/docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(process.env.port || 4000, function() {
     console.log("Server Running on port 4000")

@@ -9,7 +9,7 @@
         "url": "https://opensource.org/licenses/MIT"
       }
     },
-    "host": "localhost:5000",
+    "host": "localhost:4000",
     "basePath": "/",
     "tags": [
       {
@@ -21,7 +21,7 @@
     "consumes": ["application/json"],
     "produces": ["application/json"],
     "paths": {
-      "/api/products": {
+      "/api/category": {
         "get": {
           "tags": ["Category"],
           "summary": "Get all Category",
@@ -105,7 +105,7 @@
         ],
         "get": {
           "tags": ["Category"],
-          "summary": "Category Details based on Product Id",
+          "summary": "Category Details based on Category Id",
           "responses": {
             "200": {
               "description": "OK",
@@ -133,7 +133,7 @@
               "type": "string"
             },
             {
-              "name": "productImage",
+              "name": "categoryImage",
               "in": "formData",
               "description": "Category Image",
               "type": "file"
@@ -189,7 +189,7 @@
           "data": {
             "type": "array",
             "items": {
-              "$ref": "#/definitions/Product"
+              "$ref": "#/definitions/Category"
             }
           }
         }
